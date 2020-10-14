@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MineSweeper
 {
-    class NODE
+    class Node
     {
         public int NearMine;
         public string Contents;
-        public NODE()
+        public Node()
         {
             this.Contents = "-";
             this.NearMine = 0;

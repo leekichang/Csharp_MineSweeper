@@ -15,7 +15,7 @@ namespace MineSweeper
     {
         static void Main(string[] args)
         {
-            GAME NewGame = new GAME();
+            Game NewGame = new Game();
             NewGame.CreateGame();
             NewGame.Play();
         }

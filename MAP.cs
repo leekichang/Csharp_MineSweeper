@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace MineSweeper
 {
-    class MAP
+    class Map
     {
         public int XSize, YSize, NumberOfMine;
-        public List<List<NODE>> MAP_ = new List<List<NODE>>();
-        public MAP(int X, int Y, int NumberOfMine)
+        public List<List<Node>> MAP_ = new List<List<Node>>();
+        public Map(int X, int Y, int NumberOfMine)
         {
             this.XSize = X;
             this.YSize = Y;
             this.NumberOfMine = NumberOfMine;
             for (int y = 0; y < YSize + 2; y++)
             {
-                MAP_.Add(new List<NODE>());
+                MAP_.Add(new List<Node>());
                 for (int x = 0; x < XSize + 2; x++)
                 {
-                    MAP_[y].Add(new NODE());
+                    MAP_[y].Add(new Node());
                 }
             }
         }
@@ -47,16 +47,20 @@ namespace MineSweeper
                 {
                     if (MAP_[y][x].Contents != "*")
                     {
-                        for (int i = -1; i <= 1; i++)
-                        {
-                            for (int j = -1; j <= 1; j++)
-                            {
-                                if (MAP_[y + i][x + j].Contents == "*")
-                                {
-                                    MAP_[y][x].NearMine += 1;
-                                }
-                            }
-                        }
+                        WindowCheck(x, y);
+                    }
+                }
+            }
+        }
+        public void WindowCheck(int x, int y)
+        {
+            for (int i = -1; i <= 1; i++)
+            {
+                for (int j = -1; j <= 1; j++)
+                {
+                    if (MAP_[y + i][x + j].Contents == "*")
+                    {
+                        MAP_[y][x].NearMine += 1;
                     }
                 }
             }
